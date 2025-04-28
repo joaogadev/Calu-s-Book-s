@@ -1,1 +1,3 @@
-# Calu-s-Book-s
+# Calu's Book's
+
+Sistema de Gerenciamento de Biblioteca 
