@@ -1,6 +1,6 @@
 package models;
 
-public class bibliotecario {
+public class Bibliotecario {
     private int id;
     private String nome;
     private String senha;
