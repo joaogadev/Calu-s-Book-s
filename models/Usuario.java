@@ -1,6 +1,6 @@
 package models;
 
-public class usuario {
+public class Usuario {
     private String nome;
     private String email;
     private int id;
@@ -15,12 +15,15 @@ public class usuario {
     public int getLivrosAlugados() {return livrosAlugados;}
 
     //Construtor
-    public usuario(String nome, String email, int id, String telefone, int livrosAlugados) {
+    public Usuario(String nome, String email, int id, String telefone) {
         this.nome = nome;
         this.email = email;
         this.id = id;
         this.telefone = telefone;
-        this.livrosAlugados = livrosAlugados;
+        this.livrosAlugados = 0;
+    }
+    public Usuario(int id) {
+        this.id = id;
     }
 
     //metodos para controle de livros
