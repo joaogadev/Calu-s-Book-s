@@ -7,10 +7,10 @@ public class Aluguel {
     private Date devolucaoAluguel;
     private String status;
 
-    public Aluguel(Date dataAluguel, Date devolucaoAluguel, String status){
-        this.dataAluguel = dataAluguel;
-        this.devolucaoAluguel = devolucaoAluguel;
-        this.status = status;
+    public Aluguel(){
+        this.dataAluguel = new Date();
+        this.devolucaoAluguel = null;
+        this.status = "Alugado";
     }
     public Date getDataAluguel(){return dataAluguel;}
     public Date getDevolucaoAluguel(){return devolucaoAluguel;}
@@ -24,5 +24,10 @@ public class Aluguel {
         this.status = status;
     }
 
+    public void exibirDetalhes() {
+        System.out.println("Data de aluguel: "   + dataAluguel);
+        System.out.println("Data de devolução: " + devolucaoAluguel);
+        System.out.println("Status: "            + status);
+    }
 
 }

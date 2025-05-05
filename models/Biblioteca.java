@@ -60,18 +60,15 @@ public class Biblioteca {
         // 4) Efetiva o aluguel
         livro.decrementarExemplar();
         usuario.adicionarLivros();
-        Aluguel aluguel = new Aluguel(new Date(), null, "ALUGADO");
+
+        Aluguel aluguel = new Aluguel();
         historicoAlugueis.add(aluguel);
 
         System.out.println("Livro '" + livro.getTitulo() + "' alugado com sucesso!");
+        aluguel.exibirDetalhes();
         return true;
     }
-    /**
-     * Registra a devolução de um livro pelo título.
-     * @param titulo  título do livro a devolver
-     * @param usuario usuário que está devolvendo
-     * @return true se a devolução foi efetuada; false caso contrário
-     */
+
     public boolean devolverLivro(String titulo, Usuario usuario) {
         Optional<Livro> opt = livrosDisponiveis.stream()
                 .filter(l -> l.getTitulo().equalsIgnoreCase(titulo))
