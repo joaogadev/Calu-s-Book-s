@@ -14,7 +14,7 @@ public class Usuario {
     public String getTelefone() {return telefone;}
     public int getLivrosAlugados() {return livrosAlugados;}
 
-    //Construtor
+    //Construtor para novo usuário
     public Usuario(String nome, String email, int id, String telefone) {
         this.nome = nome;
         this.email = email;
@@ -22,13 +22,21 @@ public class Usuario {
         this.telefone = telefone;
         this.livrosAlugados = 0;
     }
+
     public Usuario(int id) {
         this.id = id;
+        this.livrosAlugados = 0;
     }
-
     //metodos para controle de livros
+    public boolean podeAlugarmais(){
+        return livrosAlugados < 5;
+    }
     public void adicionarLivros() {
-        livrosAlugados++;
+        if(podeAlugarmais()){
+            livrosAlugados++;
+        } else{
+            throw new IllegalStateException("Limite de 5 livros atingido");
+        }
     }
     public void removerLivros() {
         if (livrosAlugados > 0) {
