@@ -1,9 +1,9 @@
 package controller;
 
-import models.Usuario;
-import models.Biblioteca;
 import java.util.Scanner;
-import java.util.Random;
+import models.Biblioteca;
+import models.Bibliotecario;
+import models.Usuario;
 
 public class SistemaDoBibliotecario {
     public static void main(String[] args) {
@@ -17,16 +17,8 @@ public class SistemaDoBibliotecario {
             System.out.println("Livros Alugados: " + user.getLivrosAlugados());
 
         } else {
-            System.out.print("Qual o nome do Cliente: ");
-            String nome = sc.nextLine();
-            System.out.print("Qual o email do Cliente: ");
-            String email = sc.nextLine();
-            System.out.print("Qual o telefone do Cliente: ");
-            String telefone = sc.nextLine();
-            Random rd = new Random();
-            int id = 1000000 + rd.nextInt(9000000);
-            Usuario user = new Usuario(nome, email, id, telefone);
-            System.out.println("Livros Alugados: " + user.getLivrosAlugados());
+            Bibliotecario bibliotecario = new Bibliotecario("João", 1, "senha123");
+            bibliotecario.cadastrarCliente();
 
         }
         System.out.println("Livros Disponíveis: ");
