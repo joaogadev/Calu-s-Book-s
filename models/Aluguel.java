@@ -8,6 +8,21 @@ public class Aluguel {
     private Date devolucaoAluguel;
     private String status;
 
+    // Construtor padrão
+    public Aluguel() {
+        this.dataAluguel = new Date();
+        this.devolucaoAluguel = null;
+        this.status = "Alugado";
+    }
+
+    // Construtor com parâmetros
+    public Aluguel(Date dataAluguel, Date devolucaoAluguel, String status) {
+        this.dataAluguel = dataAluguel;
+        this.devolucaoAluguel = devolucaoAluguel;
+        this.status = status;
+    }
+
+    // Método que calcula multa por atraso
     public void calcularMulta() {
         Date hoje = new Date();
 
@@ -19,12 +34,6 @@ public class Aluguel {
         } else {
             System.out.println("Nenhuma multa. A devolução está no prazo.");
         }
-    }
-
-    public Aluguel(Date dataAluguel, Date devolucaoAluguel, String status) {
-        this.dataAluguel = dataAluguel;
-        this.devolucaoAluguel = devolucaoAluguel;
-        this.status = status;
     }
 
     public Date getDataAluguel() {
@@ -39,12 +48,17 @@ public class Aluguel {
         return status;
     }
 
-    // Setters necessários para atualizar histórico
     public void setDevolucaoAluguel(Date devolucao) {
         this.devolucaoAluguel = devolucao;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void exibirDetalhes() {
+        System.out.println("Data de aluguel: " + dataAluguel);
+        System.out.println("Data de devolução: " + devolucaoAluguel);
+        System.out.println("Status: " + status);
     }
 }
