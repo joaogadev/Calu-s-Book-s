@@ -2,6 +2,7 @@ package controller;
 
 import models.Usuario;
 import models.Biblioteca;
+import models.Bibliotecario;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -57,15 +58,16 @@ public class SistemaDoBibliotecario {
             user = sys.recuperarUsuario(id);
             System.out.println("Livros Alugados: " + user.getLivrosAlugados());
         } else {
+            Bibliotecario bibliotecario = new Bibliotecario("João", 1, "senha123");
             System.out.print("Qual o nome do Cliente: ");
             String nome = sc.nextLine();
             System.out.print("Qual o email do Cliente: ");
             String email = sc.nextLine();
             System.out.print("Qual o telefone do Cliente: ");
             String telefone = sc.nextLine();
-            int id = 1_000_000 + new Random().nextInt(9_000_000);
-            user = sys.cadastrarUsuario(nome, email, telefone, id);
-            System.out.println("ID gerado: " + id);
+
+            user = bibliotecario.cadastrarCliente(nome, email, telefone);
+            System.out.println("ID gerado: " + user.getId());
             System.out.println("Livros Alugados: " + user.getLivrosAlugados());
         }
 
