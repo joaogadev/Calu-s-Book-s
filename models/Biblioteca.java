@@ -1,5 +1,6 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,12 +33,12 @@ public class Biblioteca {
         livrosDisponiveis.add(new Livro("Morte e Vida Severina", "José Olympio", 1955, "João Cabral de Melo Neto", 2));
         livrosDisponiveis.add(new Livro("Grande Sertão: Veredas", "Nova Fronteira", 1956, "João Guimarães Rosa", 3));
     }
-    public boolean alugarLivro(String titulo, Usuario usuario) {
+    public Livro alugarLivro(String titulo, Usuario usuario) {
 
         // 1) Verifica se o usuário ainda pode alugar mais
         if (!usuario.podeAlugarmais()) {
             System.out.println("Usuário já atingiu o limite de 5 livros.");
-            return false;
+            return null;
         }
         // 2) Procura o livro pelo título
         Optional<Livro> opt = livrosDisponiveis.stream()
@@ -46,7 +47,7 @@ public class Biblioteca {
 
         if (opt.isEmpty()) {
             System.out.println("Livro não encontrado.");
-            return false;
+            return null;
         }
 
         Livro livro = opt.get();
@@ -54,7 +55,7 @@ public class Biblioteca {
         // 3) Verifica se há exemplares disponíveis
         if (!livro.podeAlugar()) {
             System.out.println("Não há exemplares disponíveis para este livro.");
-            return false;
+            return null;
         }
 
         // 4) Efetiva o aluguel
@@ -66,8 +67,10 @@ public class Biblioteca {
 
         System.out.println("Livro '" + livro.getTitulo() + "' alugado com sucesso!");
         aluguel.exibirDetalhes();
-        return true;
+        return livro;
     }
+
+
 
     public boolean devolverLivro(String titulo, Usuario usuario) {
         Optional<Livro> opt = livrosDisponiveis.stream()
@@ -87,7 +90,7 @@ public class Biblioteca {
         for (int i = historicoAlugueis.size() - 1; i >= 0; i--) {
             Aluguel a = historicoAlugueis.get(i);
             if ("ALUGADO".equals(a.getStatus())) {
-                a.setDevolucaoAluguel(new Date());
+                a.setDevolucaoAluguel(LocalDate.now());
                 a.setStatus("DEVOLVIDO");
                 break;
             }
