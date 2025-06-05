@@ -1,5 +1,6 @@
 package controller;
 
+import models.Livro;
 import models.Usuario;
 import models.Biblioteca;
 import models.Bibliotecario;
@@ -25,7 +26,7 @@ public class SistemaDoBibliotecario {
     }
 
     /** Tenta alugar um livro; retorna true se OK */
-    public boolean alugar(String titulo, Usuario usuario) {
+    public Livro alugar(String titulo, Usuario usuario) {
         return biblio.alugarLivro(titulo, usuario);
     }
 
