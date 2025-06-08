@@ -1,14 +1,12 @@
 package controller;
 
-import models.*;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Scanner;
+import models.*;
 
 public class Main {
 
@@ -17,6 +15,10 @@ public class Main {
     public Main() {
         this.biblio = new Biblioteca();
     }
+    public void listarLivros() {
+    biblio.listarLivros();
+}
+
 
     /** Cria um novo usuário */
     public Usuario cadastrarUsuario(String nome, String email, String telefone, int id) {
